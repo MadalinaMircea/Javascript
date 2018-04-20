@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            td {
+                width: 75px;
+                border-style: solid;
+                border-width: 2px;
+                border-color: pink;
+            }
+            td:hover {
+                cursor:default;
+            }
+        </style>
+        <script>
+                var neighbours = {1:[2,5], 2:[1,3,6], 3:[2,4,7], 4:[3,8], 5:[1,6,9], 6:[2,5,7,10], 7:[3,6,8,11], 8:[4,7,12], 9:[5,10,13], 10:[6,9,11,14], 
+                11:[7,10,12,15], 12:[8,11,16], 13:[9,14], 14:[13,10,15], 15:[14,11,16], 16:[15,12]};
+                function check()
+                {
+                    for(i = 1; i < 16; i++)
+                    {
+                        
+                        id = "piece" + i;
+                        
+                        elem = document.getElementById(id);
+                        if(elem.innerHTML != i.toString())
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                function clicked(nr)
+                {
+                    id = "piece" + nr;
+                    toMove = document.getElementById(id);
+                    for(i=0; i < neighbours[nr].length; i++)
+                    {
+                        elem = document.getElementById("piece" + neighbours[nr][i]);
+                        if(elem.innerHTML == "")
+                        {
+                            elem.innerHTML = toMove.innerHTML;
+                            toMove.innerHTML = "";
+                            break;
+                        }
+                    }
+                    if(check())
+                    {
+                        alert("Well done!");
+                    }
+                }
+    
+                function shuffle()
+                {
+                    nr = 5 + Math.floor(Math.random() * 10);
+                    for(i = 0; i < nr; i++)
+                    {
+                        x = 1 + Math.floor(Math.random() * 100) % 16;
+                        y = 1 + Math.floor(Math.random() * 100) % 16;
+    
+                        elem1 = document.getElementById("piece" + x);
+                        elem2 = document.getElementById("piece" + y);
+                        aux = elem1.innerHTML;
+                        elem1.innerHTML = elem2.innerHTML;
+                        elem2.innerHTML = aux;
+                    }
+                }
+            </script>
+    </head>
+
+<body>
+    <font size=15px>
+        <table>
+            <tr>
+                <td id="piece1" onclick="clicked(1)">1</td>
+                <td id="piece2" onclick="clicked(2)">2</td>
+                <td id="piece3" onclick="clicked(3)">3</td>
+                <td id="piece4" onclick="clicked(4)">4</td>
+            </tr>
+            <tr>
+                <td id="piece5" onclick="clicked(5)">5</td>
+                <td id="piece6" onclick="clicked(6)">6</td>
+                <td id="piece7" onclick="clicked(7)">7</td>
+                <td id="piece8" onclick="clicked(8)">8</td>
+            </tr>
+            <tr>
+                <td id="piece9" onclick="clicked(9)">9</td>
+                <td id="piece10" onclick="clicked(10)">10</td>
+                <td id="piece11" onclick="clicked(11)">11</td>
+                <td id="piece12" onclick="clicked(12)">12</td>
+            </tr>
+            <tr>
+                <td id="piece13" onclick="clicked(13)">13</td>
+                <td id="piece14" onclick="clicked(14)">14</td>
+                <td id="piece15" onclick="clicked(15)">15</td>
+                <td id="piece16" onclick="clicked(16)"></td>
+            </tr>
+        </table>
+        <button type="button" onclick="shuffle()">Shuffle</button>
+        
+    </font>
+</body>
+
+</html>

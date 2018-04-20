@@ -1,0 +1,43 @@
+#mainMenu {
+    width: 400px;
+    height: 75px;
+    background-color: pink;
+    border-style: solid;
+    border-color: purple;
+    border-width: 2px;
+    margin: auto;
+}
+
+#menu {
+    width: 400px;
+    height: 304px;
+    background-color: rgb(250, 133, 152);
+    border-style: solid;
+    border-color: purple;
+    border-width: 2px;
+    margin: auto;
+    visibility: hidden;
+}
+
+.option {
+    width: 400px;
+    height: 75px;
+    border-bottom: 1px solid;
+}
+
+.submenu {
+    width: 400px;
+    height: 304px;
+    background-color: rgb(235, 82, 108);
+    border-style: solid;
+    border-color: purple;
+    border-width: 2px;
+    margin: auto;
+    visibility:visible;
+}
+
+#submenu1 {
+    position: fixed;
+    top: 380;
+    left: 1300;
+}

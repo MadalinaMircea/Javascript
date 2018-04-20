@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="tema.css">
+    <script>
+        function changeImage(nr) {
+            var source = "\"img" + nr + ".png\"";
+            var divToChange = document.getElementById("big-image-div");
+            divToChange.innerHTML = '';
+            
+            var image = document.createElement("img");
+            image.id = "big-image";
+            image.src = "img" + nr + ".png";
+            image.width = "500";
+
+            var table = document.createElement("table");
+            table.style.margin = "auto";
+            var tr = document.createElement("tr");
+            var td = document.createElement("td");
+            td.appendChild(image);
+            tr.appendChild(td);
+            table.appendChild(tr);
+
+            divToChange.appendChild(table);
+        }
+
+        function removeImage() {
+            document.getElementById("big-image-div").innerHTML = '';
+        }
+    </script>
+</head>
+
+<body>
+    <div id="images">
+        <div id="img1">
+            <img src="img1.png" class="image" onmouseover="changeImage(1)" onmouseout="removeImage()">
+        </div>
+        <div id="img2">
+            <img src="img2.png" class="image" onmouseover="changeImage(2)" onmouseout="removeImage()">
+        </div>
+        <div id="img3">
+            <img src="img3.png" class="image" onmouseover="changeImage(3)" onmouseout="removeImage()">
+        </div>
+        <div id="img4">
+            <img src="img4.png" class="image" onmouseover="changeImage(4)" onmouseout="removeImage()">
+        </div>
+        <div id="img5">
+            <img src="img5.png" class="image" onmouseover="changeImage(5)" onmouseout="removeImage()">
+        </div>
+    </div>
+    <div id="big-image-div">
+
+    </div>
+</body>
+
+</html>

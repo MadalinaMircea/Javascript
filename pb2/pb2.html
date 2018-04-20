@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            img {
+                display: inline-block;
+            }
+
+            .shuffleButton {
+                width: 100px;
+                height: 50px;
+            }
+        </style>
+        <script>
+            var imageClicked = "";
+            function check() {
+                for(i=1; i<=9; i++)
+                {
+                    var id = "piece" + i;
+                    var image = document.getElementById(id);
+                    var src = "puzzle" + i + ".png";
+                    var source = image.src.split("/");
+                    if(source[source.length - 1] != src)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            function shuffle()
+            {
+                var nr = 100 + Math.floor(Math.random() * 10);
+                for(var i=0; i<nr; i++)
+                {
+                    var x = Math.floor(Math.random() * 10) % 9;
+                    var y = Math.floor(Math.random() * 10) % 9;
+
+                    var img1 = document.getElementById("piece" + x);
+                    var img2 = document.getElementById("piece" + y);
+
+                    var aux = img1.src;
+                    img1.src = img2.src;
+                    img2.src = aux;
+                }
+                if(check())
+                {
+                    shuffle();
+                }
+            }
+
+            function clicked(nr)
+            {
+                if(imageClicked == "")
+                {
+                    elem = document.getElementById("piece" + nr);
+                    elem.style.borderWidth = "2px";
+                    elem.style.borderStyle = "solid";
+                    elem.style.borderColor = "blue";
+                    imageClicked = "piece" + nr;
+                }
+                else
+                {
+                    img1 = document.getElementById(imageClicked);
+                    source = img1.src.split("/");
+                    aux = source[source.length - 1];
+                    img2 = document.getElementById("piece" + nr);
+                    img1.src = img2.src;
+                    img2.src = aux;
+                    imageClicked = "";
+                    img1.style.borderWidth = "0px";
+
+                    if(check())
+                    {
+                        alert("Well done!");
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <img id="piece1" src="puzzle1.png" onclick="clicked(1)"/>
+        <img id="piece4" src="puzzle4.png" onclick="clicked(4)"/>
+        <img id="piece7" src="puzzle7.png" onclick="clicked(7)"/>
+        <br>
+        <img id="piece2" src="puzzle2.png" onclick="clicked(2)"/>
+        <img id="piece5" src="puzzle5.png" onclick="clicked(5)"/>
+        <img id="piece8" src="puzzle8.png" onclick="clicked(8)"/>
+        <br>
+        <img id="piece3" src="puzzle3.png" onclick="clicked(3)"/>
+        <img id="piece6" src="puzzle6.png" onclick="clicked(6)"/>
+        <img id="piece9" src="puzzle9.png" onclick="clicked(9)"/>
+
+        <br><br>
+
+        <button type="button" id="shuffleButton" onclick="shuffle()">Shuffle</button>
+
+    </body>
+</html>

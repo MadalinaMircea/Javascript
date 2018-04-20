@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <img src="img1.png" id="object1" style="position:absolute;width:100px;height:100px;"/>
+        <script>
+                var object = document.getElementById("object1");
+                object.addEventListener("mousedown", objectMouseDown);
+                function objectMouseDown(ev)
+                {
+                    document.addEventListener("mousemove", objectMouseMove);
+                }
+    
+                function objectMouseMove(ev)
+                {
+                    object.style.left = ev.pageX + "px";
+                    object.style.top = ev.pageY + "px";
+                    
+                    document.addEventListener("mouseup", objectMouseUp);
+                }
+    
+                function objectMouseUp()
+                {
+                    document.removeEventListener("mousemove", objectMouseMove);
+                    document.removeEventListener("mouseup", objectMouseUp);
+                }
+            </script>
+    </body>
+</html>

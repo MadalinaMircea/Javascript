@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <ul id="first">
+        <li id="elem1" ondblclick="move(1);">First 1</li>
+        <li id="elem2" ondblclick="move(2);">First 2</li>
+        <li id="elem3" ondblclick="move(3);">First 3</li>
+    </ul>
+    <ol id="second">
+        <li id="elem4" ondblclick="move(4);">Second 1</li>
+        <li id="elem5" ondblclick="move(5);">Second 2</li>
+        <li id="elem6" ondblclick="move(6);">Second 3</li>
+        </ol>
+    <script type="text/javascript">
+
+        function move(nr) {
+            elem = document.getElementById("elem" + nr);
+            parent = elem.parentNode;
+            if(parent.id == "first")
+            {
+                var sibling = document.getElementsByTagName("body")[0].children[1];
+            }
+            else
+            {
+                var sibling = document.getElementsByTagName("body")[0].children[0];
+            }
+            parent.removeChild(elem);
+            sibling.appendChild(elem);
+        }
+        </script>
+</body>
+
+</html>

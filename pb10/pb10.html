@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <font size="15">
+        <table border="2">
+            <tbody>
+                <tr>
+                    <th onclick="sortColumn(1)">Mures</th>
+                    <th onclick="sortColumn(2)">Cluj</th>
+                    <th onclick="sortColumn(3)">Bucuresti</th>
+                </tr>
+                <tr>
+                    <td class="col1">Tg. Mures</td>
+                    <td class="col2">Cluj-Napoca</td>
+                    <td class="col3">Sectorul 1</td>
+                </tr>
+                <tr>
+                    <td class="col1">Reghin</td>
+                    <td class="col2">Apahida</td>
+                    <td class="col3">Sectorul 2</td>
+                </tr>
+                <tr>
+                    <td class="col1">Sighisoara</td>
+                    <td class="col2">Turda</td>
+                    <td class="col3">Sectorul 3</td>
+                </tr>
+            </tbody>
+        </table>
+        <script>
+            var asc = true;
+            function sortColumn(nr) {
+                column = document.getElementsByClassName("col" + nr);
+                n = column.length;
+                if (asc) {
+                    for (i = 0; i < n - 1; i++) {
+                        for (j = i + 1; j < n; j++) {
+                            if (column[i].innerHTML > column[j].innerHTML) {
+                                aux = column[i].innerHTML;
+                                column[i].innerHTML = column[j].innerHTML;
+                                column[j].innerHTML = aux;
+                            }
+                        }
+                    }
+                    asc = false;
+                }
+                else
+                {
+                    for (i = 0; i < n - 1; i++) {
+                        for (j = i + 1; j < n; j++) {
+                            if (column[i].innerHTML < column[j].innerHTML) {
+                                aux = column[i].innerHTML;
+                                column[i].innerHTML = column[j].innerHTML;
+                                column[j].innerHTML = aux;
+                            }
+                        }
+                    }
+                    asc = true;
+                }
+
+            }
+        </script>
+    </font>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+#images {
+    margin: auto;
+    width: 85%;
+}
+
+#images div {
+    display: inline-block;
+    width: 200px;
+    height: 150px;
+    margin: 20px;
+}
+
+.image {
+    width: 100%;
+}
+
+#big-image-div {
+    width: 80%;
+    margin: auto;
+    height: 500px;
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            td {
+                margin: 0;
+                padding: 0;
+            }
+            img {
+                margin: 0;
+                padding: 0;
+            }
+            tr {
+                margin: 0;
+                padding: 0;
+            }
+            td:hover {
+                cursor:default;
+            }
+        </style>
+        <script>
+                var neighbours = {1:[2,5], 2:[1,3,6], 3:[2,4,7], 4:[3,8], 5:[1,6,9], 6:[2,5,7,10], 7:[3,6,8,11], 8:[4,7,12], 9:[5,10,13], 10:[6,9,11,14], 
+                11:[7,10,12,15], 12:[8,11,16], 13:[9,14], 14:[13,10,15], 15:[14,11,16], 16:[15,12]};
+                function check()
+                {
+                    for(i = 1; i < 16; i++)
+                    {
+                        
+                        id = "piece" + i;
+                        
+                        elem = document.getElementById(id);
+                        img = elem.childNodes[0];
+                        source = img.src.split('/')
+                        source = source[source.length - 1];
+                        if(source != ("piece" + i + ".jpeg"))
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                function clicked(nr)
+                {
+                    id = "piece" + nr;
+                    toMove = document.getElementById(id);
+                    for(i=0; i < neighbours[nr].length; i++)
+                    {
+                        elem = document.getElementById("piece" + neighbours[nr][i]);
+                        if(elem.innerHTML == "")
+                        {
+                            elem.innerHTML = toMove.innerHTML;
+                            toMove.innerHTML = "";
+                            break;
+                        }
+                    }
+                    if(check())
+                    {
+                        alert("Well done!");
+                    }
+                }
+    
+                function shuffle()
+                {
+                    nr = 5 + Math.floor(Math.random() * 10);
+                    for(i = 0; i < nr; i++)
+                    {
+                        x = 1 + Math.floor(Math.random() * 100) % 16;
+                        y = 1 + Math.floor(Math.random() * 100) % 16;
+    
+                        elem1 = document.getElementById("piece" + x);
+                        elem2 = document.getElementById("piece" + y);
+                        aux = elem1.innerHTML;
+                        elem1.innerHTML = elem2.innerHTML;
+                        elem2.innerHTML = aux;
+                    }
+                }
+            </script>
+    </head>
+
+<body>
+    <font size=15px>
+        <table>
+            <tr>
+                <td id="piece1" onclick="clicked(1)"><img src="piece1.jpeg"/></td>
+                <td id="piece2" onclick="clicked(2)"><img src="piece2.jpeg"/></td>
+                <td id="piece3" onclick="clicked(3)"><img src="piece3.jpeg"/></td>
+                <td id="piece4" onclick="clicked(4)"><img src="piece4.jpeg"/></td>
+            </tr>
+            <tr>
+                <td id="piece5" onclick="clicked(5)"><img src="piece5.jpeg"/></td>
+                <td id="piece6" onclick="clicked(6)"><img src="piece6.jpeg"/></td>
+                <td id="piece7" onclick="clicked(7)"><img src="piece7.jpeg"/></td>
+                <td id="piece8" onclick="clicked(8)"><img src="piece8.jpeg"/></td>
+            </tr>
+            <tr>
+                <td id="piece9" onclick="clicked(9)"><img src="piece9.jpeg"/></td>
+                <td id="piece10" onclick="clicked(10)"><img src="piece10.jpeg"/></td>
+                <td id="piece11" onclick="clicked(11)"><img src="piece11.jpeg"/></td>
+                <td id="piece12" onclick="clicked(12)"><img src="piece12.jpeg"/></td>
+            </tr>
+            <tr>
+                <td id="piece13" onclick="clicked(13)"><img src="piece13.jpeg"/></td>
+                <td id="piece14" onclick="clicked(14)"><img src="piece14.jpeg"/></td>
+                <td id="piece15" onclick="clicked(15)"><img src="piece15.jpeg"/></td>
+                <td id="piece16" onclick="clicked(16)"></td>
+            </tr>
+        </table>
+        <button type="button" onclick="shuffle()">Shuffle</button>
+        
+    </font>
+</body>
+
+</html>
